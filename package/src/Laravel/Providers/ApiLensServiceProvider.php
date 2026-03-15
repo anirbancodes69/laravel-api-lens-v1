@@ -2,6 +2,8 @@
 
 namespace ApiLens\Laravel\Providers;
 
+use Illuminate\Routing\Router;
+
 class ApiLensServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     public function register(): void
@@ -11,7 +13,9 @@ class ApiLensServiceProvider extends \Illuminate\Support\ServiceProvider
 
     public function boot(): void
     {
-        // Boot any services or perform any actions needed during the application's bootstrapping
-        $this->app['router']->pushMiddlewareToGroup('web', \ApiLens\Laravel\Middleware\TrackApiRequests::class);
+        $this->app->booted(function () {
+            $router = $this->app->make(Router::class);
+            $router->pushMiddlewareToGroup('web', \ApiLens\Laravel\Middleware\TrackApiRequests::class);
+        });
     }
 }
