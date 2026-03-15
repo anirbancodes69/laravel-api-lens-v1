@@ -11,7 +11,6 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->append(\ApiLens\Laravel\Middleware\TrackApiRequests::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
