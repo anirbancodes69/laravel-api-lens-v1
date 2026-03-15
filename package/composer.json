@@ -1,0 +1,19 @@
+{
+    "name": "apilens/laravel-api-lens",
+    "description": "Description: API request monitoring package for Laravel",
+    "type": "library",
+    "require": {
+        "illuminate/support": "^12.54"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Apilens\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Anirban"
+        }
+    ]
+}

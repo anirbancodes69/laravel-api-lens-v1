@@ -1,0 +1,14 @@
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: api-lens-dev
+    volumes:
+      - ./package:/workspace/package
+      - ./test-app:/workspace/test-app
+
+    working_dir: /workspace
+    ports:
+      - "8000:8000"
+    tty: true
