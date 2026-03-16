@@ -4,7 +4,6 @@ namespace ApiLens\Laravel\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use ApiLens\Core\Tracker;
 use ApiLens\Core\Event;
 
 class TrackApiRequests

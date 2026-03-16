@@ -24,6 +24,10 @@ class ApiLensServiceProvider extends \Illuminate\Support\ServiceProvider
 
     public function boot(): void
     {
+        $this->publishes([
+            __DIR__.'/../../../database/migrations/create_api_lens_events_table.php' => database_path('migrations/'.date('Y_m_d_His').'_create_api_lens_events_table.php'),
+        ], 'apilens-migrations');
+
         $this->app->booted(function () {
             $router = $this->app->make(Router::class);
             $router->pushMiddlewareToGroup('web', \ApiLens\Laravel\Middleware\TrackApiRequests::class);
