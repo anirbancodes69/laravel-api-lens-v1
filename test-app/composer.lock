@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e93c0854dda4499ed6b2816be64ae4c",
+    "content-hash": "ed75cedfd59f0aedcd8221532efa5903",
     "packages": [
         {
             "name": "apilens/laravel-api-lens",
@@ -12,12 +12,19 @@
             "dist": {
                 "type": "path",
                 "url": "../package",
-                "reference": "03f3cfde35850396e1829d0204d4902a8633fda2"
+                "reference": "f805d82e827307943ed7c1b4cc0b67f2c40b7d8c"
             },
             "require": {
                 "illuminate/support": "^12.54"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Apilens\\Laravel\\Providers\\ApiLensServiceProvider"
+                    ]
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Apilens\\": "src/"

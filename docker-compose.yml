@@ -21,7 +21,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: api_lens_db
       MYSQL_USER: api_lens_user
-      MYSQL_PASSWORD: Mysqlisthebest@1
+      MYSQL_PASSWORD: api_lens_pwd
     ports:
       - "3306:3306"
     volumes:
