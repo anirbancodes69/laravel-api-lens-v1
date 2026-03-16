@@ -24,7 +24,7 @@ class TrackApiRequests
             $duration
         );
 
-        $tracker = new Tracker();
+        $tracker = app(\ApiLens\Core\Tracker::class);
         $tracker->track($event);
 
         return $response;

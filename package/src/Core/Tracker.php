@@ -2,20 +2,20 @@
 
 namespace ApiLens\Core;
 
+use ApiLens\Core\Transport\LogTransport;
+use ApiLens\Core\Transport\TransportInterface;
+
 class Tracker
 {
-    public function track(Event $event): void
+    protected TransportInterface $transport;
+
+    public function __construct(? TransportInterface $transport = null)
     {
-            $this->store($event);   
+        $this->transport = $transport ?? new LogTransport();
     }
 
-    protected function store(Event $event): void
+    public function track(Event $event): void
     {
-        // Store the event in the database or send it to an external service
-        file_put_contents(
-            storage_path('logs/api-lens.log'),
-            json_encode($event->toArray()) . PHP_EOL,
-            FILE_APPEND
-        );
+            $this->transport->send($event);
     }
 }
