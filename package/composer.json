@@ -11,6 +11,13 @@
             "Apilens\\": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Apilens\\Laravel\\Providers\\ApiLensServiceProvider"
+            ]
+        }
+    },
     "authors": [
         {
             "name": "Anirban"
