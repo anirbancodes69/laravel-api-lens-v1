@@ -39,6 +39,13 @@ class ApiLensServiceProvider extends \Illuminate\Support\ServiceProvider
             __DIR__.'/../../../config/apilens.php' => config_path('apilens.php'),
         ], 'apilens-config');
 
+        $this->loadRoutesFrom(__DIR__.'/../../../routes/web.php');
+
+        $this->loadViewsFrom(
+            __DIR__.'/../../../resources/views',
+            'apilens'
+        );
+
         $this->app->booted(function () {
             $router = $this->app->make(Router::class);
             $router->pushMiddlewareToGroup('web', \ApiLens\Laravel\Middleware\TrackApiRequests::class);
