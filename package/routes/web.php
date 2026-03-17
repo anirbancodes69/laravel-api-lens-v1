@@ -2,5 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use ApiLens\Laravel\Http\Controllers\DashboardController;
+use ApiLens\Laravel\Middleware\ApiLensAuth;
 
-Route::get('/apilens', [DashboardController::class, 'index']);
+Route::middleware(ApiLensAuth::class)->group(function () {
+    Route::get('/apilens', [DashboardController::class, 'index']);
+});
