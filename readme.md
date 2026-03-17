@@ -29,7 +29,8 @@ php artisan vendor:publish --tag=apilens-config
 3. Run migrations
 php artisan migrate
 4. Add Env variable
-APILENS_TRANSPORT=database
+APILENS_TRANSPORT=
+APILENS_TOKEN=
 
 🚀 Usage
 
