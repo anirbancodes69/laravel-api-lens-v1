@@ -8,6 +8,24 @@ class DashboardController
 {
     public function index()
     {
+        $request = request();
+
+        // Base query
+        $query = DB::table('api_lens_events');
+
+        // Filters
+        if ($request->filled('endpoint')) {
+            $query->where('endpoint', 'like', '%'.$request->endpoint.'%');
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        // Logs (latest 50)
+        $events = $query->orderByDesc('id')->limit(50)->get();
+
+        // Metrics (unfiltered - global)
         $total = DB::table('api_lens_events')->count();
 
         $errors = DB::table('api_lens_events')
@@ -35,7 +53,8 @@ class DashboardController
             'errors',
             'avgTime',
             'topEndpoints',
-            'slowEndpoints'
+            'slowEndpoints',
+            'events'
         ));
     }
 }
